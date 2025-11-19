@@ -6,7 +6,7 @@ import { loginWithEmail } from "@/app/actions/auth"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardHeader } from "@/components/ui/card"
-import { Lock, AlertCircle, Loader2, User, Mail } from 'lucide-react'
+import { Lock, AlertCircle, Loader2, User, Mail } from "lucide-react"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 
 interface LoginFormProps {
@@ -27,12 +27,10 @@ export function LoginForm({ onLoginSuccess }: LoginFormProps) {
 
     try {
       const resultado = await loginWithEmail(email, password)
-      
+
       if (resultado.success && resultado.data?.user) {
-        // Actualizar estado
         onLoginSuccess(resultado.data.user)
-        
-        // Forzar actualización de la página
+
         setTimeout(() => {
           router.refresh()
           window.location.reload()
@@ -61,9 +59,6 @@ export function LoginForm({ onLoginSuccess }: LoginFormProps) {
       <div className="w-full lg:w-1/2 flex items-center justify-center p-4">
         <Card className="w-full max-w-md shadow-2xl border-0">
           <CardHeader className="space-y-4 text-center pb-2">
-            <div className="flex justify-center">
-
-            </div>
             <div className="flex justify-center">
               <img src="/logo.png" alt="MINTAKA" className="h-25 w-auto mx-auto" />
             </div>
@@ -104,9 +99,9 @@ export function LoginForm({ onLoginSuccess }: LoginFormProps) {
                 </Alert>
               )}
 
-              <Button 
-                type="submit" 
-                className="w-full h-12 bg-orange-600 hover:bg-orange-700" 
+              <Button
+                type="submit"
+                className="w-full h-12 bg-orange-600 hover:bg-orange-700"
                 disabled={cargando}
               >
                 {cargando ? (
@@ -120,8 +115,8 @@ export function LoginForm({ onLoginSuccess }: LoginFormProps) {
               </Button>
 
               <div className="text-center">
-                <button 
-                  type="button" 
+                <button
+                  type="button"
                   className="text-sm text-black hover:underline"
                 >
                   ¿Olvidé mi contraseña?
