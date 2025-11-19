@@ -52,7 +52,7 @@ export function LoginForm({ onLoginSuccess }: LoginFormProps) {
         <div className="hidden lg:flex lg:w-1/2 items-center justify-center p-12 relative">
           <div className="absolute inset-0 bg-orange-400/20 rounded-full blur-3xl"></div>
           <img 
-            src="/blue.png" 
+            src="/img1.png" 
             alt="MINTAKA" 
             className="relative z-10 max-w-2xl w-full h-auto object-contain drop-shadow-2xl"
             onError={() => setImageError(true)}
