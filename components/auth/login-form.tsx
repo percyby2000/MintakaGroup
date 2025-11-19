@@ -121,7 +121,7 @@ export function LoginForm({ onLoginSuccess }: LoginFormProps) {
               <div className="text-center">
                 <button
                   type="button"
-                  className="text-sm text-white hover:underline"
+                  className="text-sm text-orange-800 hover:underline hover:text-orange-900"
                 >
                   ¿Olvidé mi contraseña?
                 </button>
