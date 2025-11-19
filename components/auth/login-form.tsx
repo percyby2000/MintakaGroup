@@ -18,6 +18,7 @@ export function LoginForm({ onLoginSuccess }: LoginFormProps) {
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
   const [cargando, setCargando] = useState(false)
+  const [imageError, setImageError] = useState(false)
   const router = useRouter()
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -47,20 +48,23 @@ export function LoginForm({ onLoginSuccess }: LoginFormProps) {
 
   return (
     <div className="min-h-screen flex bg-gradient-to-br from-orange-500 to-orange-600">
-      <div className="hidden lg:flex lg:w-1/2 items-center justify-center p-12 relative">
-        <div className="absolute inset-0 bg-orange-400/20 rounded-full blur-3xl"></div>
-        <img 
-          src="/blue.png" 
-          alt="MINTAKA" 
-          className="relative z-10 max-w-2xl w-full h-auto object-contain drop-shadow-2xl"
-        />
-      </div>
+      {!imageError && (
+        <div className="hidden lg:flex lg:w-1/2 items-center justify-center p-12 relative">
+          <div className="absolute inset-0 bg-orange-400/20 rounded-full blur-3xl"></div>
+          <img 
+            src="/blue.png" 
+            alt="MINTAKA" 
+            className="relative z-10 max-w-2xl w-full h-auto object-contain drop-shadow-2xl"
+            onError={() => setImageError(true)}
+          />
+        </div>
+      )}
 
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-4">
+      <div className={`w-full ${imageError ? 'lg:w-full' : 'lg:w-1/2'} flex items-center justify-center p-4`}>
         <Card className="w-full max-w-md shadow-2xl border-0">
           <CardHeader className="space-y-4 text-center pb-2">
             <div className="flex justify-center">
-              <img src="/logo.png" alt="MINTAKA" className="h-25 w-auto mx-auto" />
+              <img src="/logo.png" alt="MINTAKA" className="h-20 w-auto mx-auto" />
             </div>
           </CardHeader>
 
@@ -117,7 +121,7 @@ export function LoginForm({ onLoginSuccess }: LoginFormProps) {
               <div className="text-center">
                 <button
                   type="button"
-                  className="text-sm text-black hover:underline"
+                  className="text-sm text-white hover:underline"
                 >
                   ¿Olvidé mi contraseña?
                 </button>
